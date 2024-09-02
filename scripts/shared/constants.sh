@@ -2,10 +2,10 @@
 
 # Path to the input CSV file
 # shellcheck disable=SC2034
-INPUT_FILE="./../../data/users.csv"
-MISSING_VALUE_FILE="./../../data/missing_fields.csv"
-DATA_MISMATCH="./../../data/datatype_mismatch.csv"
-MISSING_RECORDS="./../../data/missing_records.csv"
+INPUT_FILE="./data/users.csv"
+MISSING_VALUE_FILE="./data/missing_fields.csv"
+DATA_MISMATCH="./data/datatype_mismatch.csv"
+MISSING_RECORDS="./data/missing_records.csv"
 TEST_REPORTS="./reports/"
 
 # URL for the API endpoint
