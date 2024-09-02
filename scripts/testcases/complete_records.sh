@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Source the shared functions
-source scripts/shared/constants.sh
-source scripts/shared/log_test_result.sh
-source scripts/shared/api_request.sh
+source ./scripts/shared/constants.sh
+source ./scripts/shared/log_test_result.sh
+source ./scripts/shared/api_request.sh
 
 # Function to print a bold header
 print_bold_header() {

@@ -1,58 +1,63 @@
 #!/bin/bash
 
-source scripts/shared/constants.sh
-source scripts/shared/log_test_result.sh
+# Source the API request function and logging function
+source ./scripts/shared/constants.sh
+source ./scripts/shared/log_test_result.sh
+source ./scripts/shared/api_request.sh
 
-# Define the CSV file
-CSV_FILE=$DATA_MISMATCH
+# Define the URL of the API
+api_url=$API_URL
 
-# Define the log file path
-LOG_DIR=$TEST_REPORTS
-LOG_FILE="${LOG_DIR}test_report.log"
+# Fetch data from the API
+api_data=$(fetch_users_data $api_url)
 
-# Check if the log file exists and delete it
-if [ -f "$LOG_FILE" ]; then
-    rm "$LOG_FILE"
-    echo "Deleted existing log file: $LOG_FILE"
-fi
+# Define the CSV file path
+csv_file=$DATA_MISMATCH
 
-# Print the header at the beginning of the log file and console
-echo -e "\033[1;37;44mDATA TYPE MISMATCH TESTCASE\033[0m" | tee -a "$LOG_FILE"
+# Flag to check if heading is printed
+HEADING_PRINTED=false
 
-# Create a new log file and add a header
-log_test_result "Test Case ID" "Test Description" "Expected Result" "Actual Result" "Status"
-
-# Read the CSV file line by line
-while IFS=',' read -r id name username email phone website company_name company_catchPhrase company_bs; do
+# Read the CSV file
+while IFS=, read -r id name username email phone website company_name company_catchPhrase company_bs
+do
     # Skip the header
-    if [[ "$id" == "id" ]]; then
+    if [ "$id" == "id" ]; then
         continue
     fi
 
-    # Check for datatype mismatches
-    mismatch_found=false
+    # Clean up the data to remove extra quotes and spaces
+    expected_data=$(echo "$id, $name, $username, $email, $phone, $website, $company_name, $company_catchPhrase, $company_bs" | sed 's/"//g')
 
-    # Check id field (should be integer)
-    if ! [[ "$id" =~ ^[0-9]+$ ]]; then
-        log_test_result "$id" "ID should be an integer" "Integer" "$id (String)" "Fail"
-        mismatch_found=true
+    # Check if the record exists in API data
+    if echo "$api_data" | grep -q "\"id\": $id"; then
+        # Extract actual data from API response
+        actual_data=$(echo "$api_data" | jq -r --argjson id "$id" '
+            .[] | select(.id == $id) |
+            "\(.id), \(.name), \(.username), \(.email), \(.phone), \(.website), \(.company.name), \(.company.catchPhrase), \(.company.bs)"
+        ' | sed 's/"//g')
+
+        # Compare expected and actual data
+        if [ "$expected_data" == "$actual_data" ]; then
+            actual_data="RECORDS MATCHED"
+            status="Pass"
+        else
+            actual_data="MISMATCH"
+            status="Fail"
+        fi
+    else
+        actual_data="Record not found in API"
+        status="Fail"
     fi
 
-    # Check phone field (should not include parentheses in extension)
-    if [[ "$phone" =~ \(|\) ]]; then
-        log_test_result "$id" "Phone number should not include parentheses" "No parentheses" "$phone" "Fail"
-        mismatch_found=true
+    # Print the heading only once at the top of the table
+    if [ "$HEADING_PRINTED" = false ]; then
+        echo -e "\n#######################"
+        echo -e "  DATA TYPE MISMATCH  "
+        echo -e "#######################\n"
+        HEADING_PRINTED=true
     fi
 
-    # Check website field (should not include parentheses, for consistency)
-    if [[ "$website" =~ \(|\) ]]; then
-        log_test_result "$id" "Website should not include parentheses" "No parentheses" "$website" "Fail"
-        mismatch_found=true
-    fi
+    # Log the test result
+    log_test_result "TC$id" "Validate record for ID $id" "RECORDS CHECK" "$actual_data" "$status"
 
-    # Log a success message if no mismatch was found
-    if [ "$mismatch_found" = false ]; then
-        log_test_result "$id" "No datatype mismatch detected" "None" "None" "Pass"
-    fi
-
-done < "$CSV_FILE"
+done < "$csv_file"
