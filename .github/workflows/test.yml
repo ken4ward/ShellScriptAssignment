@@ -1,0 +1,37 @@
+name: CI/CD for Shell Scripts
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up shell environment
+        run: sudo apt-get update && sudo apt-get install -y bash
+
+      - name: API Matches All CSV Records Testcase
+        run: |
+          chmod +x ./scripts/testcases/complete_records.sh
+          ./scripts/testcases/complete_records.sh
+
+      - name: Missing CSV Records Testcase
+        run: |
+          chmod +x ./scripts/testcases/missing_records.sh
+          ./scripts/testcases/missing_records.sh
+
+      - name: CSV Datatype Mismatch Check Testcase
+        run: |
+          chmod +x ./scripts/testcases/datatype_mismatch.sh
+          ./scripts/testcases/datatype_mismatch.sh
+        
+      
