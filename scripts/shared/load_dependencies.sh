@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source ./api_interaction.sh
+source ./../shared/api_request.sh
 source ./validation.sh
