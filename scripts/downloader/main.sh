@@ -1,20 +1,16 @@
 #!/bin/bash
 
 # Load dependencies
-source ./api_request.sh
+source ./../shared/api_request.sh
 source ./csv_handler.sh
 source ./utils.sh
-
-# Define constants
-API_URL="https://jsonplaceholder.typicode.com/users"
-OUTPUT_DIR="./../../data"
-OUTPUT_FILE="$OUTPUT_DIR/users.csv"
+source ./../shared/constants.sh
 
 # Ensure the data directory exists
-mkdir -p $OUTPUT_DIR
+mkdir -p "$OUTPUT_DIR"
 
 # Fetch data from the API
-json_data=$(fetch_users_data $API_URL)
+json_data=$(fetch_users_data "$API_URL")
 
 # Check for errors in fetching data
 if [ $? -ne 0 ]; then

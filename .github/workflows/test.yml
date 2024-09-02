@@ -18,6 +18,10 @@ jobs:
 
       - name: Set up shell environment
         run: sudo apt-get update && sudo apt-get install -y bash
+      - name: Set execute permissions for scripts directory
+        run: |
+          chmod -R +x ./scripts
+          chmod -R +x ./data
 
       - name: API Matches All CSV Records Testcase
         run: |
