@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Source the API request function and logging function
-source ./../shared/constants.sh
-source ./../shared/log_test_result.sh
-source ./../shared/api_request.sh
+source scripts/shared/constants.sh
+source scripts/shared/log_test_result.sh
+source scripts/shared/api_request.sh
 
 # Define the bold text color
 BOLD=$(tput bold)

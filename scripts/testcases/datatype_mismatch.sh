@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ./../shared/constants.sh
-source ./../shared/log_test_result.sh
+source scripts/shared/constants.sh
+source scripts/shared/log_test_result.sh
 
 # Define the CSV file
 CSV_FILE=$DATA_MISMATCH
