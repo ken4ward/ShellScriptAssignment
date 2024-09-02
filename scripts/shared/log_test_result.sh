@@ -1,7 +1,5 @@
 #!/bin/bash
 
-REPORT=$TEST_REPORTS
-
 # Function to log test results in a standardized format
 log_test_result() {
     local test_case_id=$1
