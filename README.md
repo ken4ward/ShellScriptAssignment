@@ -181,6 +181,11 @@ This project is designed to test and validate user data fetched from an API agai
   │   ├── complete_records.csv
   │   ├── missing_records.csv
   │   └── users.csv
+  └── results/
+  │   ├── screenshots/   
+  │         ├── completed_records.png
+  │         └── datatype_mismatch.png
+  │         └── missing_records.png
   ├── scripts/
   │   ├── shared/
   │   │   ├── api_request.sh
