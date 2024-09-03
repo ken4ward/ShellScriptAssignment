@@ -4,7 +4,10 @@
 This project is designed to test and validate user data fetched from an API against predefined records stored in CSV files. The focus is on ensuring data integrity, matching records, detecting missing entries, and handling datatype mismatches. The project utilizes shell scripts for these validations, and a CI/CD pipeline powered by GitHub Actions to automate testing.
 
 ## Things to note
-Because it was not explicitly stated that the ID should be passed as a commandline argument, this project did not provide an implementation for such, rather it implemented an iteration method checks based on the Ids in the CSV file(s). 
+- Because it was not explicitly stated that the ID should be passed as a commandline argument, this project did not provide an implementation for such, rather it implemented an iteration method checks based on the Ids in the CSV file(s). 
+- Directory referencing structures are different in all environments `(Linux (Ubuntu), MacOS and Windows)`, so it is mandated to make little tweaks if necessary. 
+- The Repository conforms with Linux (Ubuntu) 
+- The uploaded file `https://github.com/ken4ward/ShellScriptAssignment/blob/main/ShellScriptAssignment.zip` conforms with MacOS file structure.
 
 ## Setup
 - **Clone ShellScriptAssignment Repository**: `git clone https://github.com/ken4ward/ShellScriptAssignment.git`
