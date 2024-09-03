@@ -204,8 +204,8 @@ This project is designed to test and validate user data fetched from an API agai
   └── README.md
   |
   |---.github
-  └──workflows
-  └──test.yml
+        └──workflows
+            └──test.yml
   ```
 ## Test Scenarios
 
