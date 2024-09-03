@@ -245,6 +245,6 @@ This project is designed to test and validate user data fetched from an API agai
       sh datatype_mismatch.sh
       ```
   - The results will be displayed in the console formatted as a table.
-  ![image info](./results/screenshots/completed_records.png)
-  ![image info](./results/screenshots/datatype_mismatch.png)
-  ![image info](./results/screenshots/missing_records.png)
+  ![image info](results/screenshots/completed_records.png)
+  ![image info](results/screenshots/datatype_mismatch.png)
+  ![image info](results/screenshots/missing_records.png)
