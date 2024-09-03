@@ -44,7 +44,7 @@ This project is designed to test and validate user data fetched from an API agai
 - **Details**:
   - **How it's done**: The bash script should be written to:
     1. Read the unique key from the CSV file.
-    2. Use the unique key to query an external web API.
+    2. Use the unique key to query `id` an external web API.
     3. Fetch the corresponding data from the API.
     4. Compare the fetched data with the expected values in the CSV file.
     5. Output the result of the comparison to the console.
@@ -65,7 +65,7 @@ This project is designed to test and validate user data fetched from an API agai
     - This file `users.csv` will serve as the baseline for comparison during validation.
 
 ### 3. Query an External Web API
-- **Objective**: Implement functionality in the bash script to query an external web API using the unique key provided as input.
+- **Objective**: Implement functionality in the bash script to query an external web API using the unique key `id` provided as input.
 - **Details**:
   - **How it's done**:
     - Wrote a `shell script` that sends HTTP requests to the external API.
@@ -82,7 +82,7 @@ This project is designed to test and validate user data fetched from an API agai
 - **Details**:
   - **How it's done**:
     - Implemented a comparison logic in the bash script.
-    - For each field (e.g., `name`, `email, ...`), compare the value from the API response with the corresponding value in the CSV file.
+    - For each field (e.g., `name`, `name, ...`), compare the value from the API response with the corresponding value in the CSV file.
     - Log the result as "Pass" if the values match, and "Fail" if they don't in console.
     - Example:
       ```bash
@@ -155,7 +155,7 @@ This project is designed to test and validate user data fetched from an API agai
 - **Objective**: Present a well-thought-out solution for integrating the validation script within a CI/CD pipeline.
 ### Summary of CI/CD Setup with GitHub Actions
 - **Create Workflow File**
-  - Add a YAML file in `.github/workflows` (e.g., `ci-cd.yml`).
+  - Add a YAML file in `.github/workflows` (e.g., `test.yml`).
 
 - **Define Workflow Configuration**
   - Name the workflow.
@@ -214,7 +214,7 @@ This project is designed to test and validate user data fetched from an API agai
 - **Details**:
   - **How it's done**:
     - The script should iterate through each row in the CSV file `users.csv`.
-    - For each row, use the unique key to fetch data from the API.
+    - For each row, use the unique key `id` to fetch data from the API.
     - Log a "Pass" if the data is complete and matches the expected values.
 
 ### 2. Missing Records Check
