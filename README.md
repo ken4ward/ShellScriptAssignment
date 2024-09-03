@@ -135,12 +135,12 @@ This project is designed to test and validate user data fetched from an API agai
   - **How it's done**:
     - For the project, Intellij IDEA is used. to experience a full feature to working with shell script projects, install necessary plugins:
       
-      | Intellij IDEA | Description                                                                                           | Importance |
-      |---------------|-------------------------------------------------------------------------------------------------------|------------|
-      | PowerShell    | Provides PowerShell code completion and script execution support                                       | Optional   |
-      | Shell Filter  | To run an external shell command and insert or replace the returned output into the current Editor     | Optional   |
-      | Shell Process | Run a shell command on selected lines or the entire current buffer.                                    | Optional   |
-      | Shell Script  | Coding assistance: code completion, quick documentation, code refactorings.                            | Important  |
+      | Intellij IDEA Plugin | Description                                                                                           | Importance |
+      |----------------------|-------------------------------------------------------------------------------------------------------|------------|
+      | PowerShell           | Provides PowerShell code completion and script execution support                                       | Optional   |
+      | Shell Filter         | To run an external shell command and insert or replace the returned output into the current Editor     | Optional   |
+      | Shell Process        | Run a shell command on selected lines or the entire current buffer.                                    | Optional   |
+      | Shell Script         | Coding assistance: code completion, quick documentation, code refactorings.                            | Important  |
 
     - How to run the script and interpret the results.
       - Go into the root directory of the project `ShellScriptAssignment` and change directory to `scripts/testcases`
