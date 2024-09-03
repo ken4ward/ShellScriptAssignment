@@ -21,6 +21,7 @@ jobs:
       - name: Set execute permissions for scripts directory
         run: |
           chmod -R +x ./scripts
+          chmod -R +x ./results
           chmod -R +x ./data
 
       - name: API Matches All CSV Records Testcase
