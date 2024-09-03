@@ -218,12 +218,12 @@ This project is designed to test and validate user data fetched from an API agai
     - Log a "Pass" if the data is complete and matches the expected values.
 
 ### 2. Missing Records Check
-- **Objective**: Identify any field value missing in the records that are in the CSV file check against API record response.
+- **Objective**: Identify any missing records that are in the CSV file check against API record response.
 - **Details**:
   - **How it's done**:
     - The script should iterate through each row in the CSV file `missing_records.csv`.
     - For each row, use the unique key (`id`) to fetch data from the API.
-    - Validate there are no missing field values in each record iterated.
+    - Validate there are no missing in the record of CSV checked against the API.
     - Log a "Pass" if there is no missing field value and "Fail" if there are.
 
 ### 3. Data Type Mismatch Check
